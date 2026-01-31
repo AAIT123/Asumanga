@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.asumanga.data.EntryRepository;
+import com.example.asumanga.model.Entry;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +21,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        if (EntryRepository.getAll().isEmpty()) {
+            EntryRepository.add(new Entry(
+                    "Sousou no Frieren",
+                    "Kanehito Yamada",
+                    120,
+                    45,
+                    2,
+                    "Fantasy journey after the hero's death",
+                    Entry.Type.MANGA));
+            EntryRepository.add(new Entry(
+                    "Mushoku Tensei",
+                    "Rifujin na Magonote",
+                    26,
+                    14,
+                    2,
+                    "Reincarnation story",
+                    Entry.Type.NOVEL));}
         if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -31,16 +50,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment = null;
-        int id = item.getItemId();
-        if (id == R.id.nav_home) fragment = new HomeFragment();
-        else if (id == R.id.nav_manga) fragment = new MangaFragment();
-        else if (id == R.id.nav_novel) fragment = new NovelFragment();
-        else if (id == R.id.nav_add) fragment = new AddFragment();
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-            return true;
-        }
-        return false;
+        Fragment fragment =
+                item.getItemId() == R.id.nav_home  ? new HomeFragment()  :
+                item.getItemId() == R.id.nav_manga ? new MangaFragment() :
+                item.getItemId() == R.id.nav_novel ? new NovelFragment() :
+                item.getItemId() == R.id.nav_add   ? new AddFragment()   :
+                null;
+        if (fragment == null) return false;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        return true;
     }
 }

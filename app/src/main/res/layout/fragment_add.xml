@@ -20,7 +20,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Type"
             android:layout_marginTop="16dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <RadioGroup
             android:id="@+id/type_group"
@@ -41,13 +41,13 @@
                 android:id="@+id/type_manga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manga" />
+                android:text="Manga"/>
 
             <RadioButton
                 android:id="@+id/type_novel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Novel" />
+                android:text="Novel"/>
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +59,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_author"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/input_total_chapters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +87,7 @@
                 android:id="@+id/input_current_chapter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:text="Rating"
             android:layout_marginTop="16dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <RadioGroup
             android:id="@+id/rating_group"
@@ -108,19 +108,19 @@
                 android:id="@+id/rating_good"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good" />
+                android:text="Good"/>
 
             <RadioButton
                 android:id="@+id/rating_meh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meh" />
+                android:text="Meh"/>
 
             <RadioButton
                 android:id="@+id/rating_bad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bad" />
+                android:text="Bad"/>
 
         </RadioGroup>
 
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minLines="3"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,21 +146,21 @@
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"
-            android:contentDescription="Cover image placeholder" />
+            android:contentDescription="Cover image placeholder"/>
 
         <Button
             android:id="@+id/button_select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select cover image"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"/>
 
         <Button
             android:id="@+id/button_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="24dp"/>
 
     </LinearLayout>
 
