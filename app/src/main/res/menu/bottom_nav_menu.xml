@@ -21,4 +21,9 @@
         android:title="Add"
         android:icon="@android:drawable/ic_input_add" />
 
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@android:drawable/ic_menu_preferences" />
+
 </menu>

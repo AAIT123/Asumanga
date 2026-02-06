@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.asumanga.HomeFragment"
+        android:label="Home">
+
+        <action
+            android:id="@+id/action_home_to_edit"
+            app:destination="@id/nav_edit"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_manga"
+        android:name="com.example.asumanga.MangaFragment"
+        android:label="Manga">
+
+        <action
+            android:id="@+id/action_manga_to_edit"
+            app:destination="@id/nav_edit"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_novel"
+        android:name="com.example.asumanga.NovelFragment"
+        android:label="Novel">
+
+        <action
+            android:id="@+id/action_novel_to_edit"
+            app:destination="@id/nav_edit"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add"
+        android:name="com.example.asumanga.AddFragment"
+        android:label="Add"/>
+
+    <fragment
+        android:id="@+id/nav_edit"
+        android:name="com.example.asumanga.EditFragment"
+        android:label="Edit">
+
+        <argument
+            android:name="entryIndex"
+            app:argType="integer"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.asumanga.SettingsFragment"
+        android:label="Settings" />
+
+</navigation>

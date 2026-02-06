@@ -20,18 +20,18 @@ import android.widget.Toast;
 import com.example.asumanga.helper.EntryFormHelper;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
-public class AddFragment extends Fragment {
+public class EditFragment extends Fragment {
     private EntryFormHelper form;
     private final ActivityResultLauncher<String> imagePicker = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
             uri -> { if (uri != null && form != null) { form.setImageUri(uri); } }
     );
 
-    public AddFragment(){}
+    public EditFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add, container, false);
+        return inflater.inflate(R.layout.fragment_edit, container, false);
     }
 
     @Override
@@ -44,14 +44,14 @@ public class AddFragment extends Fragment {
         EditText   current = view.findViewById(R.id.input_current_chapter);
         MaterialAutoCompleteTextView type = view.findViewById(R.id.dropdown_type);
         MaterialAutoCompleteTextView rating = view.findViewById(R.id.dropdown_rating);
-        ImageView  cover   = view.findViewById(R.id.image_cover);
+        ImageView  cover   = view.findViewById(R.id.cover_image);
         Button     pick    = view.findViewById(R.id.button_select_image);
         Button     save    = view.findViewById(R.id.button_save);
         Button     cancel  = view.findViewById(R.id.button_cancel);
-        form = new EntryFormHelper(this, null, title, author, desc, total, current, type, rating, cover);
+        form = new EntryFormHelper(this, getArguments(), title, author, desc, total, current, type, rating, cover);
         pick.setOnClickListener(v -> imagePicker.launch("image/*"));
         save.setOnClickListener(v -> { if (form.submit()) {
-                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Updated", Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(this).popBackStack(); } });
         cancel.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
     }

@@ -11,13 +11,14 @@ public class Entry {
     private String coverPath;
     private Type type;
 
-    public Entry(String title, String author, int totalChapters, int currentChapter, int rating, String description, Type type) {
+    public Entry(String title, String author, int totalChapters, int currentChapter, int rating, String description, String coverPath, Type type) {
         this.title = title;
         this.author = author;
         this.totalChapters = totalChapters;
         this.currentChapter = currentChapter;
         this.rating = rating;
         this.description = description;
+        this.coverPath = coverPath;
         this.type = type;
     }
 
@@ -37,9 +38,7 @@ public class Entry {
         this.author = author;
     }
 
-    public int getTotalChapters() {
-        return totalChapters;
-    }
+    public int getTotalChapters() { return totalChapters; }
 
     public void setTotalChapters(int totalChapters) {
         this.totalChapters = totalChapters;
@@ -77,9 +76,7 @@ public class Entry {
         this.coverPath = coverPath;
     }
 
-    public Type getType() {
-        return type;
-    }
+    public Type getType() { return type; }
 
     public void setType(Type type) {
         this.type = type;
