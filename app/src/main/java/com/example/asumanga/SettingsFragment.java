@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ public class SettingsFragment extends Fragment {
 
     private static final String PREFS_NAME = "settings";
     private static final String KEY_THEME_MODE = "theme_mode";
+    private static final String KEY_LANG_MODE = "lang_mode";
 
     public SettingsFragment(){}
 
@@ -32,14 +34,25 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MaterialAutoCompleteTextView dropdown = view.findViewById(R.id.dropdown_theme);
-        String[] options = getResources().getStringArray(R.array.theme_options);
-        EntryFormHelper.setupDropdown(dropdown, R.array.theme_options);
+
         SharedPreferences prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        dropdown.setText(options[prefs.getString(KEY_THEME_MODE, "system").equals("light") ? 1 : prefs.getString(KEY_THEME_MODE, "system").equals("dark") ? 2 : 0], false);
-        dropdown.setOnItemClickListener((parent, v, position, id) -> {
-            AppCompatDelegate.setDefaultNightMode(position == 1 ? AppCompatDelegate.MODE_NIGHT_NO : position == 2  ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        MaterialAutoCompleteTextView langDropdown = view.findViewById(R.id.dropdown_language);
+        MaterialAutoCompleteTextView dropdownTheme = view.findViewById(R.id.dropdown_theme);
+        String[] langOptions = getResources().getStringArray(R.array.language_options);
+        String[] optionsTheme = getResources().getStringArray(R.array.theme_options);
+
+        EntryFormHelper.setupDropdown(dropdownTheme, R.array.theme_options);
+        dropdownTheme.setText(optionsTheme[prefs.getString(KEY_THEME_MODE, "system").equals("light") ? 1 : prefs.getString(KEY_THEME_MODE, "system").equals("dark") ? 2 : 0], false);
+        dropdownTheme.setOnItemClickListener((parent, v, position, id) -> {
             prefs.edit().putString(KEY_THEME_MODE, position == 1 ? "light" : position == 2  ? "dark" : "system").apply();
+            AppCompatDelegate.setDefaultNightMode(position == 1 ? AppCompatDelegate.MODE_NIGHT_NO : position == 2 ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        });
+
+        EntryFormHelper.setupDropdown(langDropdown, R.array.language_options);
+        langDropdown.setText(langOptions[!AppCompatDelegate.getApplicationLocales().isEmpty() ? ("en".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 1 : "es".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 2 : 0) : 0], false);
+        langDropdown.setOnItemClickListener((parent, v, position, id) -> {
+            prefs.edit().putString(KEY_LANG_MODE, position == 1 ? "english" : position == 2  ? "spanish" : "system").apply();
+            AppCompatDelegate.setApplicationLocales(position == 1 ? LocaleListCompat.forLanguageTags("en") : position == 2 ? LocaleListCompat.forLanguageTags("es") : LocaleListCompat.getEmptyLocaleList());
         });
     }
 }

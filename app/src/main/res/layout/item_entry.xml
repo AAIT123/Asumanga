@@ -20,7 +20,7 @@
             android:layout_height="90dp"
             android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"
-            android:contentDescription="Cover image"/>
+            android:contentDescription="@string/cover_image_placeholder"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -33,7 +33,7 @@
                 android:id="@+id/text_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
+                android:text="@string/title"
                 android:textStyle="bold"
                 android:textSize="16sp"/>
 
@@ -41,7 +41,7 @@
                 android:id="@+id/text_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manga"
+                android:text="@string/manga"
                 android:textSize="12sp"
                 android:textColor="@android:color/darker_gray"/>
 
@@ -49,7 +49,7 @@
                 android:id="@+id/text_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chapter 45 / 120"
+                android:text="@string/progress"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp"/>
 
@@ -57,7 +57,7 @@
                 android:id="@+id/text_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rating: Good"
+                android:text="@string/rating"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp"/>
 

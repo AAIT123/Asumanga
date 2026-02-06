@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Asumanga</string>
+
+    <!-- General -->
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="updated">Actualizado</string>
+    <string name="saved">Guardado</string>
+    <string name="required">Requerido</string>
+    <string name="invalid_progress">Progreso inválido</string>
+    <string name="entry_not_found">Entrada no encontrada</string>
+
+    <!-- Fragments -->
+    <string name="recently_updated">Actualizado recientemente</string>
+    <string name="home">Inicio</string>
+    <string name="all_manga">Todo el Manga</string>
+    <string name="all_novels">Todas las Novelas</string>
+    <string name="add">Añadir</string>
+
+    <!-- Settings -->
+    <string name="settings">Ajustes</string>
+    <string name="appearance">Apariencia</string>
+    <string name="theme">Tema</string>
+    <string name="language">Idioma</string>
+    <string name="follow_system">Seguir sistema</string>
+    <string name="light">Claro</string>
+    <string name="dark">Oscuro</string>
+    <string name="system_default">Predeterminado del sistema</string>
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+
+    <!-- Entry Form -->
+    <string name="title">Título</string>
+    <string name="author">Autor</string>
+    <string name="type">Tipo</string>
+    <string name="total_chapters">Capítulos totales</string>
+    <string name="current_chapter">Capítulo actual</string>
+    <string name="rating">Calificación</string>
+    <string name="rating_with_label">Calificación: %1$s</string>
+    <string name="progress_format">Capitulo %1$d / %2$d</string>
+    <string name="progress">Capitulo 45 / 120</string>
+    <string name="description_optional">Descripción (opcional)</string>
+    <string name="select_cover_image">Seleccionar imagen de portada</string>
+    <string name="cover_image_placeholder">Marcador de posición de imagen</string>
+    <string name="manga">Manga</string>
+    <string name="novel">Novela</string>
+    <string name="bad">Malo</string>
+    <string name="meh">Regular</string>
+    <string name="good">Bueno</string>
+    <string name="at_least_1">Debe ser al menos 1</string>
+    <string name="at_least_0">Debe ser al menos 0</string>
+</resources>

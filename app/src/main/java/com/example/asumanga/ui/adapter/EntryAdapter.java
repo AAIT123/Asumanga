@@ -16,7 +16,6 @@ import java.util.List;
 public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> {
 
     private final List<Entry> entries;
-
     private final OnItemClickListener listener;
 
     public EntryAdapter(List<Entry> entries, OnItemClickListener listener) {
@@ -32,26 +31,27 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) { holder.bind(entries.get(position)); }
 
     @Override
-    public int getItemCount() { return entries.size(); }
+    public int getItemCount() {
+        return entries.size();
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textTitle, textType, textProgress, textRating;
+
         ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.text_title);
             textType = itemView.findViewById(R.id.text_type);
             textProgress = itemView.findViewById(R.id.text_progress);
             textRating = itemView.findViewById(R.id.text_rating);
-            itemView.setOnClickListener(v -> {
-                if (getBindingAdapterPosition() != RecyclerView.NO_POSITION)
-                    listener.onItemClick(getBindingAdapterPosition()); } );
+            itemView.setOnClickListener(v -> { if (getBindingAdapterPosition() != RecyclerView.NO_POSITION) listener.onItemClick(getBindingAdapterPosition()); });
         }
 
         void bind(Entry entry) {
             textTitle.setText(entry.getTitle());
-            textType.setText(entry.getType().toString());
-            textProgress.setText(entry.getCurrentChapter() + " / " + entry.getTotalChapters());
-            textRating.setText(entry.getRating() == 2 ? "Rating: Good" : entry.getRating() == 1 ? "Rating: Meh" : "Rating: Bad");
+            textType.setText(entry.getType() == Entry.Type.MANGA ? itemView.getContext().getString(R.string.manga) : itemView.getContext().getString(R.string.novel));
+            textProgress.setText(itemView.getContext().getString(R.string.progress_format, entry.getCurrentChapter(), entry.getTotalChapters()));
+            textRating.setText(itemView.getContext().getString(R.string.rating_with_label, entry.getRating() == 2 ? itemView.getContext().getString(R.string.good) : entry.getRating() == 1 ? itemView.getContext().getString(R.string.meh) : itemView.getContext().getString(R.string.bad)));
             textRating.setTextColor(entry.getRating() == 2 ? 0xFF2E7D32 : entry.getRating() == 1 ? 0xFFF9A825 : 0xFFC62828);
         }
     }

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:id="@+id/fragment_edit"
     tools:context=".EditFragment">
 
     <LinearLayout
@@ -16,7 +17,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title">
+            android:hint="@string/title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_title"
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Type"
+            android:hint="@string/type"
             app:endIconMode="dropdown_menu">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Author">
+            android:hint="@string/author">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_author"
@@ -58,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Total chapters">
+            android:hint="@string/total_chapters">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_total_chapters"
@@ -72,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Current chapter">
+            android:hint="@string/current_chapter">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_current_chapter"
@@ -86,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Rating"
+            android:hint="@string/rating"
             app:endIconMode="dropdown_menu">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -102,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Description (optional)">
+            android:hint="@string/description_optional">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_description"
@@ -120,13 +121,13 @@
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"
-            android:contentDescription="Cover image placeholder"/>
+            android:contentDescription="@string/cover_image_placeholder"/>
 
         <Button
             android:id="@+id/button_select_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select cover image"
+            android:text="@string/select_cover_image"
             android:layout_marginTop="8dp"/>
 
         <LinearLayout
@@ -140,14 +141,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Save"/>
+                android:text="@string/save"/>
 
             <Button
                 android:id="@+id/button_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cancel" />
+                android:text="@string/cancel" />
 
         </LinearLayout>
 
