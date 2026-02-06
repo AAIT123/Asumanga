@@ -4,6 +4,7 @@
     <!-- General -->
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
     <string name="updated">Updated</string>
     <string name="saved">Saved</string>
     <string name="required">Required</string>
@@ -27,7 +28,7 @@
     <string name="dark">Dark</string>
     <string name="system_default">System Default</string>
     <string name="english">English</string>
-    <string name="spanish">Español</string>
+    <string name="spanish">Spanish</string>
 
     <!-- Entry Form -->
     <string name="title">Title</string>

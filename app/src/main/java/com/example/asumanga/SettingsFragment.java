@@ -49,7 +49,7 @@ public class SettingsFragment extends Fragment {
         });
 
         EntryFormHelper.setupDropdown(langDropdown, R.array.language_options);
-        langDropdown.setText(langOptions[!AppCompatDelegate.getApplicationLocales().isEmpty() ? ("en".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 1 : "es".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 2 : 0) : 0], false);
+        langDropdown.setText(langOptions[!AppCompatDelegate.getApplicationLocales().isEmpty() && AppCompatDelegate.getApplicationLocales().get(0) != null ? "en".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 1 : "es".equals(AppCompatDelegate.getApplicationLocales().get(0).getLanguage()) ? 2 : 0 : 0], false);
         langDropdown.setOnItemClickListener((parent, v, position, id) -> {
             prefs.edit().putString(KEY_LANG_MODE, position == 1 ? "english" : position == 2  ? "spanish" : "system").apply();
             AppCompatDelegate.setApplicationLocales(position == 1 ? LocaleListCompat.forLanguageTags("en") : position == 2 ? LocaleListCompat.forLanguageTags("es") : LocaleListCompat.getEmptyLocaleList());

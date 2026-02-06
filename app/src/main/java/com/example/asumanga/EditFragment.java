@@ -51,7 +51,7 @@ public class EditFragment extends Fragment {
         form = new EntryFormHelper(this, getArguments(), title, author, desc, total, current, type, rating, cover);
         pick.setOnClickListener(v -> imagePicker.launch("image/*"));
         save.setOnClickListener(v -> { if (form.submit()) {
-                Toast.makeText(requireContext(), "Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), R.string.updated, Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(this).popBackStack(); } });
         cancel.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
     }

@@ -70,7 +70,7 @@ public class EntryFormHelper {
     private void loadOrCreate(Bundle args) {
         if (args != null && args.containsKey("entryIndex")) {
             if (args.getInt("entryIndex") < 0 || args.getInt("entryIndex") >= EntryRepository.getAll().size()) {
-                Toast.makeText(fragment.requireContext(), "Entry not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(fragment.requireContext(), fragment.getString(R.string.entry_not_found), Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(fragment).popBackStack(); return; }
             entry = EntryRepository.getAll().get(args.getInt("entryIndex")); populate(); }
         else {
@@ -103,10 +103,10 @@ public class EntryFormHelper {
     }
 
     public boolean submit() {
-        if (title.getText().toString().isEmpty()) { title.setError("Required"); return false; }
-        if (parseInt(total.getText().toString()) < 1) { total.setError("Must be at least 1"); return false; }
-        if (parseInt(current.getText().toString()) < 0) { current.setError("Must be at least 0"); return false; }
-        if (parseInt(current.getText().toString()) > parseInt(total.getText().toString())) { current.setError("Invalid progress"); return false; }
+        if (title.getText().toString().isEmpty()) { title.setError(fragment.getString(R.string.required)); return false; }
+        if (parseInt(total.getText().toString()) < 1) { total.setError(fragment.getString(R.string.at_least_1)); return false; }
+        if (parseInt(current.getText().toString()) < 0) { current.setError(fragment.getString(R.string.at_least_0)); return false; }
+        if (parseInt(current.getText().toString()) > parseInt(total.getText().toString())) { current.setError(fragment.getString(R.string.invalid_progress)); return false; }
         
         entry.setTitle(title.getText().toString());
         entry.setAuthor(author.getText().toString().trim());

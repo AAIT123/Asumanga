@@ -44,15 +44,13 @@ public class AddFragment extends Fragment {
         EditText   current = view.findViewById(R.id.input_current_chapter);
         MaterialAutoCompleteTextView type = view.findViewById(R.id.dropdown_type);
         MaterialAutoCompleteTextView rating = view.findViewById(R.id.dropdown_rating);
-        ImageView  cover   = view.findViewById(R.id.image_cover);
+        ImageView  cover   = view.findViewById(R.id.cover_image);
         Button     pick    = view.findViewById(R.id.button_select_image);
         Button     save    = view.findViewById(R.id.button_save);
-        Button     cancel  = view.findViewById(R.id.button_cancel);
         form = new EntryFormHelper(this, null, title, author, desc, total, current, type, rating, cover);
         pick.setOnClickListener(v -> imagePicker.launch("image/*"));
         save.setOnClickListener(v -> { if (form.submit()) {
-                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), R.string.saved, Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(this).popBackStack(); } });
-        cancel.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
     }
 }

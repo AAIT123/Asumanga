@@ -17,6 +17,8 @@ import com.example.asumanga.data.EntryRepository;
 import com.example.asumanga.model.Entry;
 import com.example.asumanga.ui.adapter.EntryAdapter;
 
+import java.util.List;
+
 public class MangaFragment extends Fragment {
 
     public MangaFragment(){}
@@ -31,10 +33,11 @@ public class MangaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_manga);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        EntryAdapter adapter = new EntryAdapter(EntryRepository.getByType(Entry.Type.MANGA),
+        List<Entry> mangas = EntryRepository.getByType(Entry.Type.MANGA);
+        EntryAdapter adapter = new EntryAdapter(mangas,
                 position -> {
                     Bundle bundle = new Bundle();
-                    bundle.putInt("entryIndex", position);
+                    bundle.putInt("entryIndex", EntryRepository.getAll().indexOf(mangas.get(position)));
                     NavHostFragment.findNavController(this).navigate(R.id.action_manga_to_edit, bundle);
                 });
         recyclerView.setAdapter(adapter);

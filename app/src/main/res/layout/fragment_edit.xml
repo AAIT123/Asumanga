@@ -38,7 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:inputType="none"/>
+                android:inputType="none"
+                android:saveEnabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +96,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:inputType="none"/>
+                android:inputType="none"
+                android:saveEnabled="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,6 +133,7 @@
             android:layout_marginTop="8dp"/>
 
         <LinearLayout
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -138,17 +141,19 @@
 
             <Button
                 android:id="@+id/button_save"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/save"/>
+                android:text="@string/update" />
 
             <Button
                 android:id="@+id/button_cancel"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/cancel" />
+                android:text="@string/cancel"/>
 
         </LinearLayout>
 
