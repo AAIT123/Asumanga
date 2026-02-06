@@ -25,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         applyTheme();
         super.onCreate(savedInstanceState);
+        
+        // Inicializar el repositorio para cargar datos guardados
+        EntryRepository.init(this);
+        
         setContentView(R.layout.activity_main);
+        
+        // Solo agregar ejemplos si es la primera vez que se abre la app
         if (EntryRepository.getAll().isEmpty()) {
             EntryRepository.add(new Entry(
                     "Sousou no Frieren",
@@ -44,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
                     2,
                     "Reincarnation story",
                     "",
-                    Entry.Type.NOVEL));}
+                    Entry.Type.NOVEL));
+        }
+        
         bottomNavigationView = findViewById(R.id.bottom_nav);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         if (navHostFragment == null) throw new IllegalStateException("NavHostFragment not found");
