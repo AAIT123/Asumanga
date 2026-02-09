@@ -2,7 +2,6 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/nav_home">
 
     <fragment
@@ -34,6 +33,17 @@
 
         <action
             android:id="@+id/action_novel_to_edit"
+            app:destination="@id/nav_edit"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_anime"
+        android:name="com.example.asumanga.AnimeFragment"
+        android:label="Anime">
+
+        <action
+            android:id="@+id/action_anime_to_edit"
             app:destination="@id/nav_edit"/>
 
     </fragment>

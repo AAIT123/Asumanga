@@ -9,7 +9,6 @@
     tools:context=".SettingsFragment">
 
     <TextView
-        android:id="@+id/text_appearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/appearance"
@@ -34,7 +33,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/text_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/language"

@@ -37,18 +37,20 @@ public class EditFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        EditText   title   = view.findViewById(R.id.input_title);
-        EditText   author  = view.findViewById(R.id.input_author);
-        EditText   desc    = view.findViewById(R.id.input_description);
-        EditText   total   = view.findViewById(R.id.input_total_chapters);
-        EditText   current = view.findViewById(R.id.input_current_chapter);
-        MaterialAutoCompleteTextView type = view.findViewById(R.id.dropdown_type);
+        MaterialAutoCompleteTextView title  = view.findViewById(R.id.input_title);
+        MaterialAutoCompleteTextView type   = view.findViewById(R.id.dropdown_type);
         MaterialAutoCompleteTextView rating = view.findViewById(R.id.dropdown_rating);
-        ImageView  cover   = view.findViewById(R.id.cover_image);
-        Button     pick    = view.findViewById(R.id.button_select_image);
-        Button     save    = view.findViewById(R.id.button_save);
-        Button     cancel  = view.findViewById(R.id.button_cancel);
+        EditText  author  = view.findViewById(R.id.input_author);
+        EditText  desc    = view.findViewById(R.id.input_description);
+        EditText  total   = view.findViewById(R.id.input_total_chapters);
+        EditText  current = view.findViewById(R.id.input_current_chapter);
+        ImageView cover   = view.findViewById(R.id.cover_image);
+        Button    pick    = view.findViewById(R.id.button_select_image);
+        Button    save    = view.findViewById(R.id.button_save);
+        Button    cancel  = view.findViewById(R.id.button_cancel);
+
         form = new EntryFormHelper(this, getArguments(), title, author, desc, total, current, type, rating, cover);
+
         pick.setOnClickListener(v -> imagePicker.launch("image/*"));
         save.setOnClickListener(v -> { if (form.submit()) {
                 Toast.makeText(requireContext(), R.string.updated, Toast.LENGTH_SHORT).show();

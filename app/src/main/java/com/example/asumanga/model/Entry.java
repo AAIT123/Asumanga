@@ -1,7 +1,7 @@
 package com.example.asumanga.model;
 
 public class Entry {
-    public enum Type { MANGA, NOVEL }
+    public enum Type { MANGA, NOVEL, ANIME }
     private String title;
     private String author;
     private int totalChapters;

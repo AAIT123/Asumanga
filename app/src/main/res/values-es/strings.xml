@@ -15,20 +15,16 @@
     <string name="recently_updated">Actualizado recientemente</string>
     <string name="home">Inicio</string>
     <string name="all_manga">Todo el Manga</string>
+    <string name="all_anime">Todo el Anime</string>
     <string name="all_novels">Todas las Novelas</string>
     <string name="add">Añadir</string>
+    <string name="anime">Anime</string>
 
     <!-- Settings -->
     <string name="settings">Ajustes</string>
     <string name="appearance">Apariencia</string>
     <string name="theme">Tema</string>
     <string name="language">Idioma</string>
-    <string name="follow_system">Seguir sistema</string>
-    <string name="light">Claro</string>
-    <string name="dark">Oscuro</string>
-    <string name="system_default">Predeterminado del sistema</string>
-    <string name="english">Inglés</string>
-    <string name="spanish">Español</string>
 
     <!-- Entry Form -->
     <string name="title">Título</string>
@@ -50,4 +46,16 @@
     <string name="good">Bueno</string>
     <string name="at_least_1">Debe ser al menos 1</string>
     <string name="at_least_0">Debe ser al menos 0</string>
+
+    <!-- Options -->
+    <string-array name="type_options">
+        <item>Anime</item>
+        <item>Manga</item>
+        <item>Novela</item>
+    </string-array>
+    <string-array name="rating_options">
+        <item>Malo</item>
+        <item>Regular</item>
+        <item>Bueno</item>
+    </string-array>
 </resources>
