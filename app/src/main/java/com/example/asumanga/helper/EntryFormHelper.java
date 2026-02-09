@@ -87,7 +87,10 @@ public class EntryFormHelper {
         current.setText(String.valueOf(entry.getCurrentChapter()));
         
         String[] typeOptions = fragment.getResources().getStringArray(R.array.type_options);
-        typeDropdown.setText(entry.getType() == Entry.Type.MANGA ? typeOptions[0] : typeOptions[1], false);
+        int typeIndex = 0;
+        if (entry.getType() == Entry.Type.NOVEL) typeIndex = 1;
+        else if (entry.getType() == Entry.Type.ANIME) typeIndex = 2;
+        typeDropdown.setText(typeOptions[typeIndex], false);
         
         String[] ratingOptions = fragment.getResources().getStringArray(R.array.rating_options);
         ratingDropdown.setText(ratingOptions[entry.getRating()], false);
@@ -116,7 +119,9 @@ public class EntryFormHelper {
         
         String typeText = typeDropdown.getText().toString();
         String[] typeOptions = fragment.getResources().getStringArray(R.array.type_options);
-        entry.setType(typeText.equals(typeOptions[0]) ? Entry.Type.MANGA : Entry.Type.NOVEL);
+        if (typeText.equals(typeOptions[1])) entry.setType(Entry.Type.NOVEL);
+        else if (typeText.equals(typeOptions[2])) entry.setType(Entry.Type.ANIME);
+        else entry.setType(Entry.Type.MANGA);
         
         String ratingText = ratingDropdown.getText().toString();
         String[] ratingOptions = fragment.getResources().getStringArray(R.array.rating_options);

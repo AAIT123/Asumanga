@@ -8,6 +8,8 @@ material = "1.13.0"
 activity = "1.12.3"
 constraintlayout = "2.2.1"
 navigationFragment = "2.9.7"
+preference = "1.2.0"
+gson = "2.10.1"
 preference = "1.2.1"
 
 [libraries]
@@ -21,7 +23,7 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-

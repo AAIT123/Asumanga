@@ -39,6 +39,17 @@
     </fragment>
 
     <fragment
+        android:id="@+id/nav_anime"
+        android:name="com.example.asumanga.AnimeFragment"
+        android:label="Anime">
+
+        <action
+            android:id="@+id/action_anime_to_edit"
+            app:destination="@id/nav_edit"/>
+
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_add"
         android:name="com.example.asumanga.AddFragment"
         android:label="Add"/>
