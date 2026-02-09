@@ -1,8 +1,10 @@
 package com.example.asumanga.ui.adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,11 +60,16 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> 
         return entries.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textTitle, textType, textProgress, textRating;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final ImageView imageCover;
+        final TextView textTitle;
+        final TextView textType;
+        final TextView textProgress;
+        final TextView textRating;
 
         ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
+            imageCover = itemView.findViewById(R.id.image_cover);
             textTitle = itemView.findViewById(R.id.text_title);
             textType = itemView.findViewById(R.id.text_type);
             textProgress = itemView.findViewById(R.id.text_progress);
@@ -72,6 +79,7 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> 
                     listener.onItemClick(getBindingAdapterPosition());
                 }
             });
+            itemView.setOnClickListener(v -> { if (listener != null) listener.onItemClick(getBindingAdapterPosition()); });
         }
 
         void bind(Entry entry) {
@@ -89,10 +97,10 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.ViewHolder> 
                             entry.getRating() == 1 ? itemView.getContext().getString(R.string.meh) :
                                     itemView.getContext().getString(R.string.bad)));
             textRating.setTextColor(entry.getRating() == 2 ? 0xFF2E7D32 : entry.getRating() == 1 ? 0xFFF9A825 : 0xFFC62828);
+            if (entry.getCoverPath() != null && !entry.getCoverPath().isEmpty()) imageCover.setImageURI(Uri.parse(entry.getCoverPath()));
+            else imageCover.setImageResource(android.R.color.darker_gray);
         }
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
+    public interface OnItemClickListener { void onItemClick(int position); }
 }

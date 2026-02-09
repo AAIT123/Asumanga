@@ -4,6 +4,7 @@
     <!-- General -->
     <string name="save">Guardar</string>
     <string name="cancel">Cancelar</string>
+    <string name="update">Actualizar</string>
     <string name="updated">Actualizado</string>
     <string name="saved">Guardado</string>
     <string name="required">Requerido</string>
