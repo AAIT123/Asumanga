@@ -49,9 +49,16 @@ public class EntryFormHelper {
         this.typeDropdown = typeDropdown;
         this.ratingDropdown = ratingDropdown;
         this.coverPath = coverPath;
+
         setupDropdown(typeDropdown, R.array.type_options);
         setupDropdown(ratingDropdown, R.array.rating_options);
-        setupTitleAutocomplete();
+
+        if (args == null || !args.containsKey("entryIndex")) {
+            setupTitleAutocomplete();
+        } else {
+            title.setAdapter(null);
+        }
+
         loadOrCreate(args);
     }
 
@@ -108,7 +115,7 @@ public class EntryFormHelper {
 
         String[] typeOptions = fragment.getResources().getStringArray(R.array.type_options);
         String[] ratingOptions = fragment.getResources().getStringArray(R.array.rating_options);
-        
+
         typeDropdown.setText(entry.getType() == Entry.Type.ANIME ? typeOptions[0] : entry.getType() == Entry.Type.MANGA ? typeOptions[1] : typeOptions[2], false);
         ratingDropdown.setText(ratingOptions[entry.getRating()], false);
 
@@ -129,7 +136,7 @@ public class EntryFormHelper {
         if (parseInt(total.getText().toString()) < 1) { total.setError(fragment.getString(R.string.at_least_1)); return false; }
         if (parseInt(current.getText().toString()) < 0) { current.setError(fragment.getString(R.string.at_least_0)); return false; }
         if (parseInt(current.getText().toString()) > parseInt(total.getText().toString())) { current.setError(fragment.getString(R.string.invalid_progress)); return false; }
-        
+
         entry.setTitle(title.getText().toString());
         entry.setAuthor(author.getText().toString().trim());
         entry.setDescription(description.getText().toString().trim());
@@ -141,7 +148,7 @@ public class EntryFormHelper {
         if (typeText.equals(typeOptions[0])) entry.setType(Entry.Type.ANIME);
         else if (typeText.equals(typeOptions[1])) entry.setType(Entry.Type.MANGA);
         else entry.setType(Entry.Type.NOVEL);
-        
+
         String[] ratingOptions = fragment.getResources().getStringArray(R.array.rating_options);
         String ratingText = ratingDropdown.getText().toString();
         if (ratingText.equals(ratingOptions[2])) entry.setRating(2);
