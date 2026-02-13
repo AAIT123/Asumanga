@@ -1,5 +1,6 @@
 package com.example.asumanga;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.asumanga.data.EntryRepository;
 import com.example.asumanga.helper.EntryFormHelper;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
@@ -48,6 +50,7 @@ public class EditFragment extends Fragment {
         Button    pick    = view.findViewById(R.id.button_select_image);
         Button    save    = view.findViewById(R.id.button_save);
         Button    cancel  = view.findViewById(R.id.button_cancel);
+        Button    delete  = view.findViewById(R.id.button_delete);
 
         form = new EntryFormHelper(this, getArguments(), title, author, desc, total, current, type, rating, cover);
 
@@ -56,5 +59,20 @@ public class EditFragment extends Fragment {
                 Toast.makeText(requireContext(), R.string.updated, Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(this).popBackStack(); } });
         cancel.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
+
+        delete.setOnClickListener(v -> {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Eliminar")
+                    .setMessage("¿Estás seguro de que deseas eliminar?")
+                    .setPositiveButton("Eliminar", (dialog, which) -> {
+                        if (getArguments() != null && getArguments().containsKey("entryIndex")) {
+                            EntryRepository.delete(getArguments().getInt("entryIndex"));
+                            Toast.makeText(requireContext(), "Eliminado correctamente", Toast.LENGTH_SHORT).show();
+                            NavHostFragment.findNavController(this).popBackStack();
+                        }
+                    })
+                    .setNegativeButton("Cancelar", null)
+                    .show();
+        });
     }
 }

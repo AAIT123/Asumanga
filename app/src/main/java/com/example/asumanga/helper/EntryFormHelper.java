@@ -19,6 +19,9 @@ import com.example.asumanga.model.Entry;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -125,8 +128,37 @@ public class EntryFormHelper {
 
     public void setImageUri(Uri uri) {
         if (uri != null) {
-            selectedUriString = uri.toString();
-            coverPath.setImageURI(uri); }
+            String localPath = saveToInternalStorage(uri);
+            if (localPath != null) {
+                selectedUriString = localPath;
+                coverPath.setImageURI(Uri.parse(selectedUriString));
+            }
+        }
+    }
+
+    private String saveToInternalStorage(Uri uri) {
+        try {
+            // Generar un nombre único para evitar conflictos
+            String fileName = "cover_" + System.currentTimeMillis() + ".jpg";
+            File destFile = new File(fragment.requireContext().getFilesDir(), fileName);
+
+            InputStream is = fragment.requireContext().getContentResolver().openInputStream(uri);
+            FileOutputStream os = new FileOutputStream(destFile);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+
+            os.close();
+            is.close();
+
+            return Uri.fromFile(destFile).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public boolean submit() {
@@ -157,6 +189,7 @@ public class EntryFormHelper {
 
         entry.setCoverPath(selectedUriString);
         if (!EntryRepository.getAll().contains(entry)) EntryRepository.add(entry);
+        else EntryRepository.update(EntryRepository.getAll().indexOf(entry), entry);
         return true;
     }
 

@@ -1,6 +1,7 @@
 package com.example.asumanga.data;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import com.example.asumanga.model.Entry;
 import com.google.gson.Gson;
@@ -39,6 +40,30 @@ public class EntryRepository {
     public static void update(int index, Entry entry) {
         if (index >= 0 && index < entries.size()) {
             entries.set(index, entry);
+            save();
+        }
+    }
+
+    public static void delete(int index) {
+        if (index >= 0 && index < entries.size()) {
+            Entry entry = entries.get(index);
+            // Eliminar la imagen si existe
+            if (entry.getCoverPath() != null) {
+                try {
+                    Uri uri = Uri.parse(entry.getCoverPath());
+                    if ("file".equals(uri.getScheme())) {
+                        File file = new File(uri.getPath());
+                        if (file.exists()) {
+                            if (file.delete()) {
+                                Log.d(TAG, " " + file.getAbsolutePath());
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error al eliminar la imagen", e);
+                }
+            }
+            entries.remove(index);
             save();
         }
     }
